@@ -1,0 +1,62 @@
+{
+   "9bf9b868-6212-41ce-8419-fea4643d3437": {
+      "resourceKinds": [{
+         "resourceKindKey": "HostSystem",
+         "adapterKindKey": "VMWARE"
+      }],
+      "modificationTime": 1742483714316,
+      "name": "CPU Demand Squared",
+      "formula": "pow(${this, metric=cpu|demandPct}, 2)",
+      "description": "",
+      "unitId": "",
+      "modifiedBy": "6bed9b1c-c980-45cc-87a1-c92ecd7e8943"
+   },
+   "ff67cc95-ff3f-452a-b0bc-c0277f0662ee": {
+      "resourceKinds": [{
+         "resourceKindKey": "HostSystem",
+         "adapterKindKey": "VMWARE"
+      }],
+      "modificationTime": 1742491933178,
+      "name": "Memory Demand Squared",
+      "formula": "pow(${this, metric=mem|demand|workload}, 2)",
+      "description": "",
+      "unitId": "",
+      "modifiedBy": "6bed9b1c-c980-45cc-87a1-c92ecd7e8943"
+   },
+   "1aed2524-0b11-4db8-8dbb-94f9088f6e3f": {
+      "resourceKinds": [{
+         "resourceKindKey": "ClusterComputeResource",
+         "adapterKindKey": "VMWARE"
+      }],
+      "modificationTime": 1742490236327,
+      "name": "CPU Demand StdDev",
+      "formula": "sqrt((count(${adaptertype=VMWARE, objecttype=HostSystem, metric=Super Metric|sm_9bf9b868-6212-41ce-8419-fea4643d3437, depth=1})*sum(${adaptertype=VMWARE, objecttype=HostSystem, metric=Super Metric|sm_9bf9b868-6212-41ce-8419-fea4643d3437, depth=1})-pow(sum(${adaptertype=VMWARE, objecttype=HostSystem, metric=cpu|demandPct, depth=1}),2))/count(${adaptertype=VMWARE, objecttype=HostSystem, metric=Super Metric|sm_9bf9b868-6212-41ce-8419-fea4643d3437, depth=1}))",
+      "description": "",
+      "unitId": "",
+      "modifiedBy": "6bed9b1c-c980-45cc-87a1-c92ecd7e8943"
+   },
+   "c036199c-5544-463f-9fd5-71a6fd1907bd": {
+      "resourceKinds": [{
+         "resourceKindKey": "ClusterComputeResource",
+         "adapterKindKey": "VMWARE"
+      }],
+      "modificationTime": 1742492345709,
+      "name": "Memory Demand StdDev",
+      "formula": "sqrt((count(${adaptertype=VMWARE, objecttype=HostSystem, metric=Super Metric|sm_ff67cc95-ff3f-452a-b0bc-c0277f0662ee, depth=1})*sum(${adaptertype=VMWARE, objecttype=HostSystem, metric=Super Metric|sm_ff67cc95-ff3f-452a-b0bc-c0277f0662ee, depth=1})-pow(sum(${adaptertype=VMWARE, objecttype=HostSystem, metric=mem|demand|workload, depth=1}),2))/count(${adaptertype=VMWARE, objecttype=HostSystem, metric=Super Metric|sm_ff67cc95-ff3f-452a-b0bc-c0277f0662ee, depth=1}))",
+      "description": "",
+      "unitId": "",
+      "modifiedBy": "6bed9b1c-c980-45cc-87a1-c92ecd7e8943"
+   },
+   "21cece9d-6178-4977-b3d7-34ede1470cbe": {
+      "resourceKinds": [{
+         "resourceKindKey": "ClusterComputeResource",
+         "adapterKindKey": "VMWARE"
+      }],
+      "modificationTime": 1742502676261,
+      "name": "Happiness Ratio",
+      "formula": "100*${this, metric=summary|drs_happy_vms}/${this, metric=summary|number_running_vms}",
+      "description": "",
+      "unitId": "",
+      "modifiedBy": "6bed9b1c-c980-45cc-87a1-c92ecd7e8943"
+   }
+}
